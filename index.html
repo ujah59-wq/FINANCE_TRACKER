@@ -223,7 +223,7 @@ ${ft?`<div class="card"><div class="row"><span>${mn(m)} salary <b>${ftOn(s,m)?gb
 
 function sec(m,k,t,debt){const a=M(m)[k],sk=k=='exp'?shc(m):{p:0,a:0},c=debt?'minmax(90px,1fr) auto auto auto 24px 22px':'minmax(90px,1fr) auto auto 24px 22px';
 return `<div class="card"><h3>${t}</h3><div class="rg" style="grid-template-columns:${c}"><div class="r hd"><span>Name</span>${debt?'<span>Due</span>':''}<span>Planned</span><span>Actual</span><span>✓</span><span></span></div>
-${k=='exp'?`<div class="r"><span><b>Shift Costs</b><div class="mut">${S.streams.filter(s=>s.type!='ft').map(s=>(s.name||'Stream')+': '+sd(per(s,sm(m,1))[0])+' – '+sd(per(s,sm(m,1))[1])).join(' · ')||'no part-time streams'}</div></span><span>${gbp(sk.p)}</span><span>${gbp(sk.a)}</span><span></span><span></span></div>`:''}
+${k=='exp'?`<div class="r"><span><b>Shift Costs</b></span><span>${gbp(sk.p)}</span><span>${gbp(sk.a)}</span><span></span><span></span></div>`:''}
 ${a.map(x=>{const q=f=>`mi('${m}','${k}','${x.id}','${f}',this.value)`;return `<div class="r">${I(x.n,q('n'))}${debt?I(x.d,q('d'),'number'):''}${I(x.p,q('p'),'number')}${I(x.a,q('a'),'number')}${C(x.k,`mi('${m}','${k}','${x.id}','k',this.checked)`)}<button class="x" onclick="md('${m}','${k}','${x.id}')">×</button></div>`}).join('')}
 <div class="r" style="font-weight:700"><span>Total</span>${debt?`<span>${gbp(tot(a,'d'))}</span>`:''}<span>${gbp(tot(a,'p')+sk.p)}</span><span>${gbp(tot(a,'a')+sk.a)}</span><span></span><span></span></div></div><button class="btn s" onclick="ma('${m}','${k}')">+ Add</button></div>`}
 function bills(m){const a=M(m).bills,c='minmax(90px,1fr) auto 24px 22px';
